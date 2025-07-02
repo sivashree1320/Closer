@@ -1,0 +1,33 @@
+﻿@* @{
+    ViewData["Title"] = "Search Results";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Results</title>
+</head>
+<body>
+
+    <h2>Search Results for "@ViewBag.Query"</h2>
+
+    @if (ViewBag.Results != null && ViewBag.Results.Count > 0)
+    {
+        <ul>
+            @foreach (var item in ViewBag.Results)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No results found.</p>
+    }
+
+    <a href="@Url.Action("Index", "Home")">Go back to Home</a>
+
+</body>
+</html>
+ *@

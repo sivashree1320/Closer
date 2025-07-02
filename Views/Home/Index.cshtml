@@ -1,0 +1,170 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Website</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        #search-input {
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+        }
+
+        #search-button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+            #search-button:hover {
+                background-color: #555;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <section id="header">
+        <a href="#"><img src="~/images/logo.jpeg" class="logo" alt="Logo" /></a>
+        <ul id="navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="/Home/About">About</a></li>
+            <li><a href="/Home/Contact">Contact</a></li>
+            <li>
+                <a asp-controller="Home" asp-action="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    (<span id="cart-count">0</span>)
+                </a>
+            </li>
+            <li><a href="/Account/SignIn">Sign In</a></li>
+
+            <!-- ✅ STEP 1: Search Form -->
+            <li>
+                <form asp-controller="SearchAction" asp-action="Shop" method="get" id="search-container">
+                    <input type="text" id="search-input" name="searchTerm" placeholder="Search..." />
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" style="display: none; position: fixed; top: 70px; right: 20px; width: 300px; max-height: 400px; overflow-y: auto; background-color: red; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 20px; z-index: 1001;">
+        <h3>Your Cart</h3>
+        <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h4>Cosy & Affluent</h4>
+        <h2>Super value deals</h2>
+        <h1>Loved by Fashion Enthusiasts</h1>
+        <p>Save more with coupons & up to 70% off!</p>
+        <li><a href="/Home/Kids"><button>SHOP NOW</button></a></li>
+    </section>
+
+    <!-- Features Section -->
+    <section id="feature" class="section-p1">
+        <a href="/Mens">
+            <div class="fe-box">
+                <img src="~/images/mens.jpg" width="200" height="200" alt="Mens" />
+                <h6>MENS</h6>
+            </div>
+        </a>
+
+
+        <div class="fe-box">
+            <img src="~/images/plus-sporting.jpeg" width="200" height="200" alt="Plus Sporting" />
+            <h6>PLUS SPORTING</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="~/images/extra flash.jpeg" width="200" height="200" alt="Extra Flash" />
+            <h6>EXTRA FLASH</h6>
+        </div>
+        
+        <div class="fe-box">
+            <img src="~/images/cosy.jpeg" width="200" height="200" alt="Cosy" />
+            <h6>COSY</h6>
+        </div>
+
+        <a href="/Home/Kids">
+            <div class="fe-box">
+                <img src="~/images/KIDS.jpeg" width="200" height="200" alt="Kids" />
+                <h6>Kids</h6>
+            </div>
+        </a>
+
+        
+
+        <!-- Product Section -->
+        <div id="product-container"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <p>
+                Contact us:
+                <a href="mailto:sivashree906@gmail.com">sivashree906@gmail.com</a>
+            </p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Update Cart Count
+            function updateCartCount() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                $('#cart-count').text(cart.length);
+            }
+
+            updateCartCount();
+
+            // Optional: Toggle kids section (animation)
+            $('#highlightBox').click(function () {
+                $('#kids-products').slideToggle();
+            });
+
+            // Optional: Toggle cart modal
+            $('#cart-link').click(function (e) {
+                e.preventDefault();
+                $('#cart-modal').toggle();
+            });
+        });
+    </script>
+</body>
+</html>
