@@ -12,4 +12,3 @@ namespace Closer.Models
         public string Password { get; set; }
     }
 }
-
