@@ -53,7 +53,7 @@
         <ul id="navbar">
             <li><a href="#">Home</a></li>
             <li><a href="/Home/About">About</a></li>
-            <li><a href="/Home/Contact">Contact</a></li>
+            <li><a asp-controller ="Contact" asp-action="Index">Contact</a></li>
             <li>
                 <a asp-controller="Home" asp-action="Cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -62,7 +62,7 @@
             </li>
             <li><a href="/Account/SignIn">Sign In</a></li>
 
-            <!-- ✅ STEP 1: Search Form -->
+            <!-- STEP 1: Search Form -->
             <li>
                 <form asp-controller="SearchAction" asp-action="Shop" method="get" id="search-container">
                     <input type="text" id="search-input" name="searchTerm" placeholder="Search..." />
@@ -89,7 +89,7 @@
 
     <!-- Features Section -->
     <section id="feature" class="section-p1">
-        <a href="/Mens">
+        <a asp-controller="Men" asp-action="Index">
             <div class="fe-box">
                 <img src="~/images/mens.jpg" width="200" height="200" alt="Mens" />
                 <h6>MENS</h6>
@@ -99,17 +99,17 @@
 
         <div class="fe-box">
             <img src="~/images/plus-sporting.jpeg" width="200" height="200" alt="Plus Sporting" />
-            <h6>PLUS SPORTING</h6>
+            <h6>WOMAN</h6>
         </div>
 
         <div class="fe-box">
             <img src="~/images/extra flash.jpeg" width="200" height="200" alt="Extra Flash" />
-            <h6>EXTRA FLASH</h6>
+            <h6>CURVES</h6>
         </div>
         
         <div class="fe-box">
             <img src="~/images/cosy.jpeg" width="200" height="200" alt="Cosy" />
-            <h6>COSY</h6>
+            <h6>FLATS</h6>
         </div>
 
         <a href="/Home/Kids">

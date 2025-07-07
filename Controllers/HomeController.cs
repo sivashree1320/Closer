@@ -1,4 +1,5 @@
 ﻿using Closer.Data;
+using Closer.Domain.Models;
 using Closer.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace Closer.Controllers
             _logger = logger;
             _context = context;
         }
-       
+
 
 
         public IActionResult Index()
@@ -36,30 +37,28 @@ namespace Closer.Controllers
             return View();
 
         }
-        public IActionResult Contact()
-        {
-            return View();
-        }
 
         public IActionResult Cart()
         {
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Contact(ContactMessage message)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.ContactMessages.Add(message);
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Message submitted successfully!";
-                return RedirectToAction("Contact");
-            }
+       // [HttpPost]
+        //public async Task<IActionResult> Contact(ContactMessage message)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.ContactMessages.Add(message);
+        //        await _context.SaveChangesAsync();
+        //        TempData["SuccessMessage"] = "Message submitted successfully!";
+        //        return RedirectToAction("Contact");
+        //    }
 
-            return View(message);
-        }
+        //    return View(message);
+        //}
     }
+
+
 }
     
 
